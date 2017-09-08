@@ -24,10 +24,10 @@ io.on('connection',(socket)=>{
         console.log("Create message",message);
         //io.emit broadcasts the event including the user who initialted it
         io.emit('newMessage',generateMessage(message.from,message.text));
-        callback("This is from server");
+        callback();
     });
 
-    socket.on('createLocationMessage',(cords)=>{
+    socket.on('createLocationMessage',(cords,callback)=>{
         io.emit('newLocationMessage',generateLocationMessage("Admin",cords.latitude,cords.longitude));
     });
     
